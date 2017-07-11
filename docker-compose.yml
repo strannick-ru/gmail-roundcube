@@ -1,0 +1,23 @@
+---
+version: '3'
+services:
+
+  perdition:
+    image: ubuntu:14.04
+    volumes:
+      - ./perdition:/srv/perdition
+    entrypoint: /srv/perdition/start.sh
+
+  imapproxy:
+    image: ubuntu:14.04
+    volumes:
+      - ./imapproxy:/srv/imapproxy
+    entrypoint: /srv/imapproxy/start.sh
+
+  roundcube:
+    image: ubuntu:14.04
+    ports:
+    - "8080:80"
+    volumes:
+      - ./roundcube:/srv/roundcube
+    entrypoint: /srv/roundcube/start.sh
